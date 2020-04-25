@@ -34,8 +34,10 @@ module.exports = function(app) {
 
   app.post("/api/notes", function(req, res) {
     // It will do this by sending out the value "true" have a note
+    req.body.id = Math.floor(Math.random()*1000).toString();
     console.log(req.body);
     noteData.push(req.body);
+    console.log(noteData)
     res.json(true);
   });
 
@@ -45,8 +47,8 @@ module.exports = function(app) {
 
   app.delete("/api/notes/:id", function(req, res) {
     // Empty out the arrays of data
-    var id = req.params.id
-
+    var id = req.params.id;
+    console.log(req.params.id)
     res.json({ ok: true });
   });
 };
